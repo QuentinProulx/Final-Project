@@ -9,4 +9,9 @@ public class RentedUtility extends Utility implements Returnable {
     public boolean returnItem(Store store, Product product) {
         return false;
     }
+
+    @Override
+    public void calculateReturnValue() {
+
+    }
 }
