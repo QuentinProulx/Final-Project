@@ -1,26 +1,16 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class Customer {
     private String name;
     private Map<Product, Integer> products = new LinkedHashMap<>();
     private boolean isEmployee;
+    private Gender gender;
 
-    public Customer() {
-        this("None");
-    }
-
-    public Customer(String name) {
-        this(name, false);
-    }
-
-    public Customer(String name, boolean isEmployee) {
+    public Customer(String name, Gender gender) {
         this.name = name;
-        this.isEmployee = isEmployee;
+        this.gender = gender;
     }
 
     public List<Product> getProducts(Store store, String keyword) {
@@ -41,5 +31,55 @@ public abstract class Customer {
         // TODO: Requires: Store Stock Integration
         // NOTE: Only works if the user has the product
         return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return isEmployee == customer.isEmployee && Objects.equals(name, customer.name) && Objects.equals(products, customer.products);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, products, isEmployee);
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", products=" + products +
+                ", isEmployee=" + isEmployee +
+                '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Map<Product, Integer> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Map<Product, Integer> products) {
+        this.products = products;
+    }
+
+    public boolean isEmployee() {
+        return isEmployee;
+    }
+
+    public void setEmployee(boolean employee) {
+        isEmployee = employee;
+    }
+
+    public enum Gender {
+        MALE, FEMALE
     }
 }
