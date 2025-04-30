@@ -4,27 +4,51 @@ import java.util.*;
 
 public abstract class Customer {
     private String name;
-    private Map<Product, Integer> products = new LinkedHashMap<>();
-    private boolean isEmployee;
     private Gender gender;
 
+    private Map<Product, Integer> products = new LinkedHashMap<>();
+
+    private boolean isEmployee;
+    private int money;
+
     public Customer(String name, Gender gender) {
-        this.name = name;
-        this.gender = gender;
+        this(name, gender, 0);
     }
 
+    public Customer(String name, Gender gender, int money) {
+        this.name = name;
+        this.gender = gender;
+        this.money = money;
+    }
+
+    /**
+     * Gets a list of products that the store has with the keyword specified by the customer
+     * @param store the store to be searched for products with said keyword
+     * @param keyword the keyword the Customer is searching for
+     * @return the list of all the products which contain the keyword which the store contains
+     */
     public List<Product> getProducts(Store store, String keyword) {
         // TODO: Make it so this searches for products with a certain keyword
         // TODO: Requires: Store Stock Integration
         return null;
     }
 
-    // TODO: Make it so this takes an item from the store, removes that item from the store, and adds it to the user's products
-    // TODO: Requires: Store Stock Integration
-    // NOTE: Only works if the store has the product
+    /**
+     * Takes a product from the store and gives it to the Customer if the Customer is eligible and has the funds
+     * @param store the store that the Customer is buying from
+     * @param product the product that the Customer is attempting to buy
+     * @return whether the transaction was successful or not
+     */
     public abstract boolean purchaseProduct(Store store, Product product);
 
+    /**
+     * Returns a product from the Customer's products back to the store they bought it from and recieves a refund
+     * @param store the store to return the product to
+     * @param product the product to be returned
+     * @return whether the returning of the product was a success or not
+     */
     public boolean returnProduct(Store store, Product product) {
+        // TODO: Requires TextIO implementation
         // TODO: Make it so this gives back and item that the player has and gives it back to the store
         // TODO: Requires: Store Stock Integration
         // NOTE: Only works if the user has the product
