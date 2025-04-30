@@ -1,7 +1,7 @@
 package org.example;
 
-public class GeneralProduct extends Product implements Returnable {
-    public GeneralProduct(int price, String name) {
+public class RentedUtility extends Utility implements Returnable {
+    public RentedUtility(int price, String name) {
         super(price, name);
     }
 
