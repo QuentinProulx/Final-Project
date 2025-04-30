@@ -41,20 +41,6 @@ public abstract class Customer {
      */
     public abstract boolean purchaseProduct(Store store, Product product);
 
-    /**
-     * Returns a product from the Customer's products back to the store they bought it from and recieves a refund
-     * @param store the store to return the product to
-     * @param product the product to be returned
-     * @return whether the returning of the product was a success or not
-     */
-    public boolean returnProduct(Store store, Product product) {
-        // TODO: Requires TextIO implementation
-        // TODO: Make it so this gives back and item that the player has and gives it back to the store
-        // TODO: Requires: Store Stock Integration
-        // NOTE: Only works if the user has the product
-        return false;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
