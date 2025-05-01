@@ -7,6 +7,7 @@ import java.util.TreeMap;
 public class Store {
     private String name;
     private int profit;
+    private int debt;
     private Map<Product, Integer> products = new TreeMap<>();
     private Map<AdultProduct, Integer> adultProducts = new TreeMap<>();
     private Map<GeneralProduct, Integer> generalProducts = new TreeMap<>();
@@ -15,6 +16,8 @@ public class Store {
         this.name = name;
         profit = 0;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

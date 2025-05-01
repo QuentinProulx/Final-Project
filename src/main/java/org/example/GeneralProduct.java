@@ -14,7 +14,8 @@ public class GeneralProduct extends Product implements Returnable {
     }
 
     @Override
-    public boolean returnItem(Store store, Product product) {
+    public boolean returnItem(Store store) {
+        // TODO: Make the item returnable upon class of TextIO in the Store class
         return false;
     }
 
