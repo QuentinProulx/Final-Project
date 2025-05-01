@@ -1,13 +1,12 @@
 package org.example;
 
 import java.util.Map;
-import java.util.Objects;
 import java.util.TreeMap;
 
 public class Store {
-    private static String name;
-    private static double money;
-    private static double debt;
+    private static String name = "Quentin's Store";
+    private static double money = 0;
+    private static double debt = 0;
     private static Map<Product, Integer> products = new TreeMap<>();
 
     /**
@@ -20,10 +19,9 @@ public class Store {
             throw new IllegalArgumentException("Product cannot be null");
         }
         if (amount < 1) {
-            System.out.println("Amount can not be less than 1");
-            return false;
+            throw new IllegalArgumentException("Amount cannot be less than 1");
         }
-        if (product.getPrice() - money * amount < 0) {
+        if (money - product.getPrice() * amount < 0) {
             System.out.println("Store doesn't have enough money to make the purchase");
             return false;
         }
@@ -44,12 +42,11 @@ public class Store {
      * @param amount the amount of money that the store is asking for in the loan
      * @return whether the loan was able to go through or not
      */
-    public static boolean takeLoan(int amount) {
+    public static boolean takeLoan(double amount) {
         if (amount < 0) {
-            System.out.println("Cannot take a negative loan");
-            return false;
+            throw new IllegalArgumentException("Amount cannot be less than 0");
         }
-        if (debt + amount > 10000) {
+        if (debt + amount >= 10000) {
             System.out.println("Cannot be more than $10,000 in debt after taking a loan");
             return false;
         }
@@ -65,16 +62,15 @@ public class Store {
      * @param amount the amount of debt that is going to be paid
      * @return whether this transaction can go through or not
      */
-    public static boolean payDebt(int amount) {
+    public static boolean payDebt(double amount) {
         if (amount < 0) {
-            System.out.println("Cannot pay a negative amount");
-            return false;
+            throw new IllegalArgumentException("Amount cannot be less than 0");
         }
         if (debt - amount < 0) {
             System.out.println("Cannot pay non-existent debt");
             return false;
         }
-        if (money - amount > 0) {
+        if (money - amount < 0) {
             System.out.println("Can't go into debt paying debt");
             return false;
         }
