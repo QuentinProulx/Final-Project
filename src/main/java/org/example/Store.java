@@ -2,7 +2,6 @@ package org.example;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class Store {
     private static String name = "Quentin's Store";
