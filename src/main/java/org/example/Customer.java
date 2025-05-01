@@ -34,11 +34,10 @@ public abstract class Customer {
 
     /**
      * Takes a product from the store and gives it to the Customer if the Customer is eligible and has the funds
-     * @param store the store that the Customer is buying from
      * @param product the product that the Customer is attempting to buy
      * @return whether the transaction was successful or not
      */
-    public abstract boolean purchaseProduct(Store store, Product product);
+    public abstract boolean purchaseProduct(Product product);
 
     public class CustomerComparator implements Comparator<Customer> {
         @Override

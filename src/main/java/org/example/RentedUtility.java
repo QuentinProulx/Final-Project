@@ -6,7 +6,7 @@ public class RentedUtility extends Utility implements Returnable {
     }
 
     @Override
-    public boolean returnItem(Store store) {
+    public boolean returnItem() {
         // TODO: Make the item returnable upon class of TextIO in the Store class
         // Remember that if the store can't afford to pay the rented price, the money will go into the debt
         return false;
