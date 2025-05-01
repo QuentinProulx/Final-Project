@@ -3,7 +3,7 @@ package org.example;
 import java.util.Objects;
 
 public class Utility extends Item {
-    private int monthsOwned;
+    protected int monthsOwned;
 
     public Utility(int price, String name) {
         super(price, name);

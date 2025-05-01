@@ -3,10 +3,10 @@ package org.example;
 import java.util.*;
 
 public abstract class Customer {
-    private String name;
-    private Gender gender;
-    private double money;
-    private boolean isEmployee;
+    protected String name;
+    protected Gender gender;
+    protected double money;
+    protected boolean isEmployee;
 
     private Map<Product, Integer> products = new LinkedHashMap<>();
 
