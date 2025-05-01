@@ -5,7 +5,7 @@ import java.util.*;
 public abstract class Customer {
     private String name;
     private Gender gender;
-    private int money;
+    private double money;
     private boolean isEmployee;
 
     private Map<Product, Integer> products = new LinkedHashMap<>();
@@ -22,14 +22,22 @@ public abstract class Customer {
 
     /**
      * Gets a list of products that the store has with the keyword specified by the customer
-     * @param store the store to be searched for products with said keyword
      * @param keyword the keyword the Customer is searching for
      * @return the list of all the products which contain the keyword which the store contains
      */
-    public List<Product> getProducts(Store store, String keyword) {
-        // TODO: Make it so this searches for products with a certain keyword
-        // TODO: Requires: Store Stock Integration
-        return null;
+    public List<Product> searchProducts(String keyword) {
+        if (keyword == null || keyword.isEmpty()) {
+            throw new IllegalArgumentException("Keyword cannot be null or empty");
+        }
+        List<Product> productList = new ArrayList<>();
+
+        for (Product product : Store.getProducts().keySet()) {
+            if (product.getName().toLowerCase().contains(keyword.toLowerCase())) {
+                productList.add(product);
+            }
+        }
+
+        return productList;
     }
 
     /**
@@ -104,11 +112,11 @@ public abstract class Customer {
         this.gender = gender;
     }
 
-    public int getMoney() {
+    public double getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(double money) {
         this.money = money;
     }
 

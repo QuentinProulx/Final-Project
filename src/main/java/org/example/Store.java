@@ -116,35 +116,35 @@ public class Store {
                 '}';
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public static void setName(String name) {
         Store.name = name;
     }
 
-    public double getMoney() {
+    public static double getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public static void setMoney(double money) {
         Store.money = money;
     }
 
-    public double getDebt() {
+    public static double getDebt() {
         return debt;
     }
 
-    public void setDebt(double debt) {
+    public static void setDebt(double debt) {
         Store.debt = debt;
     }
 
-    public Map<Product, Integer> getProducts() {
+    public static Map<Product, Integer> getProducts() {
         return products;
     }
 
-    public void setProducts(Map<Product, Integer> products) {
+    public static void setProducts(Map<Product, Integer> products) {
         Store.products = products;
     }
 }
