@@ -3,9 +3,9 @@ package org.example;
 import java.util.Objects;
 
 public abstract class Item implements Comparable<Item> {
-    private int id;
-    private double price;
-    private String name;
+    protected int id;
+    protected double price;
+    protected String name;
 
     private static int nextId = 0;
     public Item(int price, String name) {
