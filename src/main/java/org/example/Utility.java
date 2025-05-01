@@ -7,6 +7,7 @@ public class Utility extends Item {
 
     public Utility(int price, String name) {
         super(price, name);
+        this.monthsOwned = 0;
     }
 
     @Override

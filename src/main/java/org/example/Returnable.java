@@ -12,5 +12,5 @@ public interface Returnable {
      * Calculates how much money would be gained upon returning the Item
      * @return the amount of money that would be gained or lost if the Item were to be returned
      */
-    int calculateReturnValue();
+    double calculateReturnValue();
 }

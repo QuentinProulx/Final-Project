@@ -17,7 +17,9 @@ public class Store {
         profit = 0;
     }
 
-
+    public boolean acquireItem(Product product) {
+        return false;
+    }
 
     @Override
     public boolean equals(Object o) {

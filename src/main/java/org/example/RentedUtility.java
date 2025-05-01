@@ -13,7 +13,7 @@ public class RentedUtility extends Utility implements Returnable {
     }
 
     @Override
-    public int calculateReturnValue() {
+    public double calculateReturnValue() {
         return getMonthsOwned() * getPrice();
     }
 }

@@ -20,7 +20,7 @@ public class GeneralProduct extends Product implements Returnable {
     }
 
     @Override
-    public int calculateReturnValue() {
+    public double calculateReturnValue() {
         return (isUsed) ? 0 : getPrice();
     }
 
