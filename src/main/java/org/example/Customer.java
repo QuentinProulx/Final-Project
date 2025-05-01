@@ -5,11 +5,10 @@ import java.util.*;
 public abstract class Customer {
     private String name;
     private Gender gender;
+    private int money;
+    private boolean isEmployee;
 
     private Map<Product, Integer> products = new LinkedHashMap<>();
-
-    private boolean isEmployee;
-    private int money;
 
     public Customer(String name, Gender gender) {
         this(name, gender, 0);
@@ -40,6 +39,17 @@ public abstract class Customer {
      * @return whether the transaction was successful or not
      */
     public abstract boolean purchaseProduct(Store store, Product product);
+
+    public class CustomerComparator implements Comparator<Customer> {
+        @Override
+        public int compare(Customer o1, Customer o2) {
+            if (isEmployee) {
+                return o1.getName().compareTo(o2.getName());
+            } else {
+                return Double.compare(o1.getMoney(), o2.getMoney());
+            }
+        }
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -85,6 +95,22 @@ public abstract class Customer {
 
     public void setEmployee(boolean employee) {
         isEmployee = employee;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public enum Gender {
