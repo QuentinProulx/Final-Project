@@ -12,6 +12,10 @@ public class Adult extends Customer {
         super(name, gender);
     }
 
+    public Adult(String name, Gender gender, double money) {
+        super(name, gender, money);
+    }
+
     @Override
     public boolean purchaseProduct(Product product) {
         if (product == null) {
@@ -27,24 +31,29 @@ public class Adult extends Customer {
         if (Store.getProducts().containsKey(product)) {
             Store.getProducts().put(product, Store.getProducts().get(product) - 1);
 
+            System.out.println(Store.getProducts());
+
+            if (Store.getProducts().get(product) == 0) {
+                Store.getProducts().remove(product);
+            }
+
             this.getProducts().putIfAbsent(product, 0);
-            this.getProducts().put(product, Store.getProducts().get(product) + 1);
+            this.getProducts().put(product, this.getProducts().get(product) + 1);
 
             if (product instanceof AdultProduct) {
                 adultProducts.putIfAbsent((AdultProduct) product, 0);
-                adultProducts.put((AdultProduct) product, Store.getProducts().get(product) + 1);
+                adultProducts.put((AdultProduct) product, adultProducts.get(product) + 1);
             }
             if (product instanceof GeneralProduct) {
                 generalProducts.putIfAbsent((GeneralProduct) product, 0);
-                generalProducts.put((GeneralProduct) product, Store.getProducts().get(product) + 1);
+                generalProducts.put((GeneralProduct) product, generalProducts.get(product) + 1);
             }
 
             Store.setMoney(Store.getMoney() + product.getRetailPrice());
             this.setMoney(this.getMoney() - product.getRetailPrice());
 
-            if (Store.getProducts().get(product) == 0) {
-                Store.getProducts().remove(product);
-            }
+            product.setOwner(this);
+
             return true;
         }
 

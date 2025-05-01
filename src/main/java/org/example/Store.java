@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -7,7 +8,7 @@ public class Store {
     private static String name = "Quentin's Store";
     private static double money = 0;
     private static double debt = 0;
-    private static Map<Product, Integer> products = new TreeMap<>();
+    private static Map<Product, Integer> products = new LinkedHashMap<>();
 
     /**
      * Adds a product to the store's products in exchange for money

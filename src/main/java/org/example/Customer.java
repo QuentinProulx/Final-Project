@@ -14,7 +14,7 @@ public abstract class Customer {
         this(name, gender, 0);
     }
 
-    public Customer(String name, Gender gender, int money) {
+    public Customer(String name, Gender gender, double money) {
         this.name = name;
         this.gender = gender;
         this.money = money;

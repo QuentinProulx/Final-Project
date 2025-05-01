@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Objects;
 
-public abstract class Product extends Item {
+public class Product extends Item {
     private Customer owner;
     private double retailPrice;
 
@@ -17,18 +17,17 @@ public abstract class Product extends Item {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Product product = (Product) o;
-        return Double.compare(retailPrice, product.retailPrice) == 0 && Objects.equals(owner, product.owner);
+        return Double.compare(retailPrice, product.retailPrice) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), owner, retailPrice);
+        return Objects.hash(super.hashCode(), retailPrice);
     }
 
     @Override
     public String toString() {
         return "Product{" +
-                "owner=" + owner +
                 ", retailPrice=" + retailPrice +
                 '}' + ", " + super.toString();
     }

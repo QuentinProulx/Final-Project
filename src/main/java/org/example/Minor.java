@@ -20,15 +20,20 @@ public class Minor extends Customer {
         if (Store.getProducts().containsKey(product)) {
             Store.getProducts().put(product, Store.getProducts().get(product) - 1);
 
-            this.getProducts().putIfAbsent(product, 0);
-            this.getProducts().put(product, Store.getProducts().get(product) + 1);
-
-            Store.setMoney(Store.getMoney() + product.getRetailPrice());
-            this.setMoney(this.getMoney() - product.getRetailPrice());
+            System.out.println(Store.getProducts());
 
             if (Store.getProducts().get(product) == 0) {
                 Store.getProducts().remove(product);
             }
+
+            this.getProducts().putIfAbsent(product, 0);
+            this.getProducts().put(product, this.getProducts().get(product) + 1);
+
+            Store.setMoney(Store.getMoney() + product.getRetailPrice());
+            this.setMoney(this.getMoney() - product.getRetailPrice());
+
+            product.setOwner(this);
+
             return true;
         }
 
