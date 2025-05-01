@@ -85,6 +85,10 @@ public class Store {
         return true;
     }
 
+    /**
+     * Hires a customer to work at the store
+     * @param customer the customer to be hired
+     */
     public static void hireEmployee(Customer customer) {
         if (customer == null) {
             throw new IllegalArgumentException("Customer can not be null");
@@ -92,6 +96,10 @@ public class Store {
         customer.setEmployee(true);
     }
 
+    /**
+     * Fires a customer from working at the store
+     * @param customer the customer to be fired
+     */
     public static void fireEmployee(Customer customer) {
         if (customer == null) {
             throw new IllegalArgumentException("Customer can not be null");
