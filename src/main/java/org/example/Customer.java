@@ -23,7 +23,7 @@ public abstract class Customer {
     /**
      * Gets a list of products that the store has with the keyword specified by the customer
      * @param keyword the keyword the Customer is searching for
-     * @return the list of all the products which contain the keyword which the store contains
+     * @return the set of all the products which contain the keyword which the store contains
      */
     public Set<Product> searchProducts(String keyword) {
         if (keyword == null || keyword.isEmpty()) {
