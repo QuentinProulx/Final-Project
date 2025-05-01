@@ -25,11 +25,11 @@ public abstract class Customer {
      * @param keyword the keyword the Customer is searching for
      * @return the list of all the products which contain the keyword which the store contains
      */
-    public List<Product> searchProducts(String keyword) {
+    public Set<Product> searchProducts(String keyword) {
         if (keyword == null || keyword.isEmpty()) {
             throw new IllegalArgumentException("Keyword cannot be null or empty");
         }
-        List<Product> productList = new ArrayList<>();
+        Set<Product> productList = new TreeSet<>();
 
         for (Product product : Store.getProducts().keySet()) {
             if (product.getName().toLowerCase().contains(keyword.toLowerCase())) {

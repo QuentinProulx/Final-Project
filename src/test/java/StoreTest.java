@@ -1,7 +1,4 @@
-import org.example.Adult;
-import org.example.Customer;
-import org.example.Product;
-import org.example.Store;
+import org.example.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +19,7 @@ public class StoreTest {
 
     @Test
     public void testAcquireItem2() { // General test case
-        Product product = new Product(15, "Ball");
+        Product product = new GeneralProduct(15, "Ball");
         Store.setMoney(15);
 
         boolean result = Store.acquireItem(product);
@@ -37,7 +34,7 @@ public class StoreTest {
 
     @Test
     public void testAcquireItem3() { // Product too expensive test case
-        Product product = new Product(15, "Ball");
+        Product product = new GeneralProduct(15, "Ball");
 
         boolean result = Store.acquireItem(product);
 
@@ -46,7 +43,7 @@ public class StoreTest {
 
     @Test
     public void testAcquireItem4() { // Amount out of bounds test case
-        Product product = new Product(15, "Ball");
+        Product product = new GeneralProduct(15, "Ball");
         int amount = -5;
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {Store.acquireItem(product, amount);});
