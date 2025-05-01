@@ -5,39 +5,98 @@ import java.util.Objects;
 import java.util.TreeMap;
 
 public class Store {
-    private String name;
-    private double money;
-    private double debt;
-    private Map<Product, Integer> products = new TreeMap<>();
+    private static String name;
+    private static double money;
+    private static double debt;
+    private static Map<Product, Integer> products = new TreeMap<>();
 
-    public Store(String name) {
-        this.name = name;
-        money = 0;
-    }
-
-    public boolean acquireItem(Product product) {
-        if (product.getPrice() - money < 0) {
+    /**
+     * Adds a product to the store's products in exchange for money
+     * @param product the product to be added
+     * @return whether the transaction has gone through or not
+     */
+    public static boolean acquireItem(Product product, int amount) {
+        if (product == null) {
+            throw new IllegalArgumentException("Product cannot be null");
+        }
+        if (amount < 1) {
+            System.out.println("Amount can not be less than 1");
+            return false;
+        }
+        if (product.getPrice() - money * amount < 0) {
+            System.out.println("Store doesn't have enough money to make the purchase");
             return false;
         }
         products.putIfAbsent(product, 0);
         products.put(product, 1);
 
-        money -= product.getPrice();
+        money -= product.getPrice() * amount;
 
         return true;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Store store = (Store) o;
-        return money == store.money && Objects.equals(name, store.name) && Objects.equals(products, store.products);
+    public static boolean acquireItem(Product product) {
+        return acquireItem(product, 1);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, money, products);
+    /**
+     * Takes a loan, increasing both the money that the store has and the debt that the store has
+     * @param amount the amount of money that the store is asking for in the loan
+     * @return whether the loan was able to go through or not
+     */
+    public static boolean takeLoan(int amount) {
+        if (amount < 0) {
+            System.out.println("Cannot take a negative loan");
+            return false;
+        }
+        if (debt + amount > 10000) {
+            System.out.println("Cannot be more than $10,000 in debt after taking a loan");
+            return false;
+        }
+
+        debt += amount;
+        money += amount;
+
+        return true;
+    }
+
+    /**
+     * Pays debt; Removes the amount of debt that is being paid and
+     * @param amount the amount of debt that is going to be paid
+     * @return whether this transaction can go through or not
+     */
+    public static boolean payDebt(int amount) {
+        if (amount < 0) {
+            System.out.println("Cannot pay a negative amount");
+            return false;
+        }
+        if (debt - amount < 0) {
+            System.out.println("Cannot pay non-existent debt");
+            return false;
+        }
+        if (money - amount > 0) {
+            System.out.println("Can't go into debt paying debt");
+            return false;
+        }
+
+        debt -= amount;
+        money -= amount;
+
+        return true;
+    }
+
+    public static void hireEmployee(Customer customer) {
+        if (customer == null) {
+            throw new IllegalArgumentException("Customer can not be null");
+        }
+        customer.setEmployee(true);
+    }
+
+    public static void fireEmployee(Customer customer) {
+        if (customer == null) {
+            throw new IllegalArgumentException("Customer can not be null");
+        }
+        customer.setEmployee(false);
     }
 
     @Override
@@ -54,7 +113,7 @@ public class Store {
     }
 
     public void setName(String name) {
-        this.name = name;
+        Store.name = name;
     }
 
     public double getMoney() {
@@ -62,7 +121,7 @@ public class Store {
     }
 
     public void setMoney(int money) {
-        this.money = money;
+        Store.money = money;
     }
 
     public double getDebt() {
@@ -70,7 +129,7 @@ public class Store {
     }
 
     public void setDebt(double debt) {
-        this.debt = debt;
+        Store.debt = debt;
     }
 
     public Map<Product, Integer> getProducts() {
@@ -78,6 +137,6 @@ public class Store {
     }
 
     public void setProducts(Map<Product, Integer> products) {
-        this.products = products;
+        Store.products = products;
     }
 }
