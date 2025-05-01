@@ -29,4 +29,12 @@ public class Utility extends Item {
                 "monthsOwned=" + monthsOwned +
                 '}' + ", " + super.toString();
     }
+
+    public int getMonthsOwned() {
+        return monthsOwned;
+    }
+
+    public void setMonthsOwned(int monthsOwned) {
+        this.monthsOwned = monthsOwned;
+    }
 }

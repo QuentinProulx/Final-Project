@@ -11,7 +11,7 @@ public class RentedUtility extends Utility implements Returnable {
     }
 
     @Override
-    public void calculateReturnValue() {
-
+    public int calculateReturnValue() {
+        return getMonthsOwned() * getPrice();
     }
 }
