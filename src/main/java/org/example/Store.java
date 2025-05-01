@@ -6,19 +6,25 @@ import java.util.TreeMap;
 
 public class Store {
     private String name;
-    private int profit;
-    private int debt;
+    private double money;
+    private double debt;
     private Map<Product, Integer> products = new TreeMap<>();
-    private Map<AdultProduct, Integer> adultProducts = new TreeMap<>();
-    private Map<GeneralProduct, Integer> generalProducts = new TreeMap<>();
 
     public Store(String name) {
         this.name = name;
-        profit = 0;
+        money = 0;
     }
 
     public boolean acquireItem(Product product) {
-        return false;
+        if (product.getPrice() - money < 0) {
+            return false;
+        }
+        products.putIfAbsent(product, 0);
+        products.put(product, 1);
+
+        money -= product.getPrice();
+
+        return true;
     }
 
     @Override
@@ -26,22 +32,20 @@ public class Store {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Store store = (Store) o;
-        return profit == store.profit && Objects.equals(name, store.name) && Objects.equals(products, store.products) && Objects.equals(adultProducts, store.adultProducts) && Objects.equals(generalProducts, store.generalProducts);
+        return money == store.money && Objects.equals(name, store.name) && Objects.equals(products, store.products);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, profit, products, adultProducts, generalProducts);
+        return Objects.hash(name, money, products);
     }
 
     @Override
     public String toString() {
         return "Store{" +
                 "name='" + name + '\'' +
-                ", profit=" + profit +
+                ", profit=" + money +
                 ", products=" + products +
-                ", adultProducts=" + adultProducts +
-                ", generalProducts=" + generalProducts +
                 '}';
     }
 
@@ -53,12 +57,20 @@ public class Store {
         this.name = name;
     }
 
-    public int getProfit() {
-        return profit;
+    public double getMoney() {
+        return money;
     }
 
-    public void setProfit(int profit) {
-        this.profit = profit;
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public double getDebt() {
+        return debt;
+    }
+
+    public void setDebt(double debt) {
+        this.debt = debt;
     }
 
     public Map<Product, Integer> getProducts() {
@@ -67,21 +79,5 @@ public class Store {
 
     public void setProducts(Map<Product, Integer> products) {
         this.products = products;
-    }
-
-    public Map<AdultProduct, Integer> getAdultProducts() {
-        return adultProducts;
-    }
-
-    public void setAdultProducts(Map<AdultProduct, Integer> adultProducts) {
-        this.adultProducts = adultProducts;
-    }
-
-    public Map<GeneralProduct, Integer> getGeneralProducts() {
-        return generalProducts;
-    }
-
-    public void setGeneralProducts(Map<GeneralProduct, Integer> generalProducts) {
-        this.generalProducts = generalProducts;
     }
 }

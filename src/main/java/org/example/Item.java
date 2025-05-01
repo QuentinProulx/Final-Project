@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Objects;
 
-public abstract class Item {
+public abstract class Item implements Comparable<Item> {
     private int id;
     private double price;
     private String name;
@@ -12,6 +12,11 @@ public abstract class Item {
         this.price = price;
         this.name = name;
         this.id = nextId++;
+    }
+
+    @Override
+    public int compareTo(Item o) {
+        return Double.compare(this.price, o.price);
     }
 
     @Override

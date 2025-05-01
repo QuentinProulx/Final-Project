@@ -3,8 +3,8 @@ package org.example;
 import java.util.Objects;
 
 public class Product extends Item {
-    Customer owner;
-    double retailPrice;
+    private Customer owner;
+    private double retailPrice;
 
     public Product(int price, String name) {
         super(price, name);
