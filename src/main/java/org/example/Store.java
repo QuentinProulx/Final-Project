@@ -98,7 +98,7 @@ public class Store {
         return true;
     }
 
-    public static boolean sellitem(Product product) {
+    public static boolean sellItem(Product product) {
         return sellItem(product, 1);
     }
 
