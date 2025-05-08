@@ -7,9 +7,14 @@ public class RentedUtility extends Utility implements Returnable {
 
     @Override
     public boolean returnItem() {
-        // TODO: Make the item returnable upon class of TextIO in the Store class
-        // Remember that if the store can't afford to pay the rented price, the money will go into the debt
-        return false;
+        if (Store.getMoney() > price) {
+            Store.setDebt(Store.getDebt() + calculateReturnValue());
+            Store.setMoney(0);
+            return true;
+        }
+
+        Store.setMoney(Store.getMoney() - price);
+        return true;
     }
 
     @Override

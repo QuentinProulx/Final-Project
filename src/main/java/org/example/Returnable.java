@@ -3,7 +3,7 @@ package org.example;
 public interface Returnable {
     /**
      * Returns an item to where it was bought from for some value
-     * @return whether the Customer was able to return the Item or not
+     * @return whether the class was able to return the Item or not
      */
     boolean returnItem();
 
