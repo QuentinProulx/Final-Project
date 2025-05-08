@@ -163,4 +163,6 @@ public class StoreTest {
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {Store.fireEmployee(customer);});
     }
+
+    //TODO: Add the rest of the Store methods to this
 }
