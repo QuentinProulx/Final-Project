@@ -41,6 +41,41 @@ public class Store {
     }
 
     /**
+     * Removes a product from the store's products in exchange for money
+     * @param product the product to be sold
+     * @param amount the amount of the product to be sold
+     * @return whether the transaction was successful or not
+     */
+    public static boolean sellitem(Product product, int amount) {
+        if (product == null) {
+            throw new IllegalArgumentException("Product cannot be null");
+        }
+        if (amount < 1) {
+            throw new IllegalArgumentException("Amount cannot be less than 1");
+        }
+        if (!products.containsKey(product)) {
+            System.out.println("Store doesn't have this product");
+            return false;
+        }
+        if (products.get(product) < amount) {
+            System.out.println("Selling a greater amount of the product than the store has in stock");
+        }
+
+        products.put(product, products.get(product) - amount);
+        money += product.getRetailPrice() * amount;
+
+        if (products.get(product) == 0) {
+            products.remove(product);
+        }
+
+        return true;
+    }
+
+    public static boolean sellitem(Product product) {
+        return sellitem(product, 1);
+    }
+
+    /**
      * Takes a loan, increasing both the money that the store has and the debt that the store has
      * @param amount the amount of money that the store is asking for in the loan
      * @return whether the loan was able to go through or not
