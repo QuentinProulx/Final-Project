@@ -15,24 +15,31 @@ public class Store {
 
     /**
      * Adds a product to the store's products in exchange for money
-     * @param product the product to be added
+     * @param item the product to be added
      * @return whether the transaction has gone through or not
      */
-    public static boolean acquireItem(Product product, int amount) {
-        if (product == null) {
+    public static boolean acquireItem(Item item, int amount) {
+        if (item == null) {
             throw new IllegalArgumentException("Product cannot be null");
         }
         if (amount < 1) {
             throw new IllegalArgumentException("Amount cannot be less than 1");
         }
-        if (money - product.getPrice() * amount < 0) {
+        if (money - item.getPrice() * amount < 0) {
             System.out.println("Store doesn't have enough money to make the purchase");
             return false;
         }
-        products.putIfAbsent(product, 0);
-        products.put(product, 1);
 
-        money -= product.getPrice() * amount;
+        if (item instanceof Product) {
+            products.putIfAbsent((Product) item, 0);
+            products.put((Product) item, 1);
+        }
+        if (item instanceof Utility) {
+            utilities.putIfAbsent((Utility) item, 0);
+            utilities.put((Utility) item, 1);
+        }
+
+        money -= item.getPrice() * amount;
 
         return true;
     }
@@ -47,7 +54,7 @@ public class Store {
      * @param amount the amount of the product to be sold
      * @return whether the transaction was successful or not
      */
-    public static boolean sellitem(Product product, int amount) {
+    public static boolean sellItem(Product product, int amount) {
         if (product == null) {
             throw new IllegalArgumentException("Product cannot be null");
         }
