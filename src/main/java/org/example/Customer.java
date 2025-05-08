@@ -1,8 +1,12 @@
 package org.example;
 
+import java.io.File;
 import java.util.*;
 
 public abstract class Customer {
+    protected static int id = 0;
+    protected File receiptFile = new File("src/main/resources/" + id++);
+
     protected String name;
     protected Gender gender;
     protected double money;
@@ -118,6 +122,22 @@ public abstract class Customer {
 
     public void setMoney(double money) {
         this.money = money;
+    }
+
+    public static int getId() {
+        return id;
+    }
+
+    public static void setId(int id) {
+        Customer.id = id;
+    }
+
+    public File getReceiptFile() {
+        return receiptFile;
+    }
+
+    public void setReceiptFile(File receiptFile) {
+        this.receiptFile = receiptFile;
     }
 
     public enum Gender {
