@@ -17,6 +17,10 @@ public class Minor extends Customer {
             System.out.println("Customer is trying to make an invalid purchase");
             return false;
         }
+        if (product instanceof AdultProduct) {
+            System.out.println("Minors can not buy Adult Products");
+            return false;
+        }
         if (Store.getProducts().containsKey(product)) {
             Store.getProducts().put(product, Store.getProducts().get(product) - 1);
 
