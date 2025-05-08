@@ -1,6 +1,8 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Store {
@@ -8,6 +10,7 @@ public class Store {
     private static double money = 0;
     private static double debt = 0;
     private static Map<Product, Integer> products = new LinkedHashMap<>();
+    private static List<Customer> employees = new ArrayList<>();
 
     /**
      * Adds a product to the store's products in exchange for money
@@ -89,6 +92,7 @@ public class Store {
         if (customer == null) {
             throw new IllegalArgumentException("Customer can not be null");
         }
+        employees.add(customer);
         customer.setEmployee(true);
     }
 
@@ -100,6 +104,7 @@ public class Store {
         if (customer == null) {
             throw new IllegalArgumentException("Customer can not be null");
         }
+        employees.remove(customer);
         customer.setEmployee(false);
     }
 
