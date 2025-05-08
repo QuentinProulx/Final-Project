@@ -10,6 +10,7 @@ public class Store {
     private static double money = 0;
     private static double debt = 0;
     private static Map<Product, Integer> products = new LinkedHashMap<>();
+    private static Map<Utility, Integer> utilities = new LinkedHashMap<>();
     private static List<Customer> employees = new ArrayList<>();
 
     /**
@@ -141,6 +142,23 @@ public class Store {
         }
         employees.remove(customer);
         customer.setEmployee(false);
+    }
+
+    /**
+     * Calculates how much the store is spending on rented items per year
+     * @return the amount the store is spending on rented items every year
+     */
+    public static double calculateAmountSpentPerYear() {
+        double amount = 0;
+
+        for (Utility utility : utilities.keySet()) {
+            if (!(utility instanceof RentedUtility)) {
+                continue;
+            }
+            amount += utility.getPrice() * utilities.get(utility);
+        }
+
+        return amount;
     }
 
     @Override
