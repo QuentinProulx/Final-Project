@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Objects;
 
-public class Utility extends Item {
+public abstract class Utility extends Item {
     protected int monthsOwned;
 
     public Utility(int price, String name) {
