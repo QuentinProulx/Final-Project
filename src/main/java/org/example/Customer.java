@@ -1,6 +1,7 @@
 package org.example;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public abstract class Customer {
@@ -19,6 +20,12 @@ public abstract class Customer {
     }
 
     public Customer(String name, Gender gender, double money) {
+        try {
+            receiptFile.createNewFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         this.name = name;
         this.gender = gender;
         this.money = money;
