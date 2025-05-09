@@ -13,10 +13,10 @@ public class Minor extends Customer {
         if (product == null) {
             throw new NullPointerException("Product is null");
         }
-        if (product.getRetailPrice() < 0) {
+        if (product.getRetailPrice() * ((isEmployee) ? 0.3 : 1) < 0) {
             throw new IllegalArgumentException("Product price is negative");
         }
-        if (this.getMoney() - product.getRetailPrice() < 0) {
+        if (this.getMoney() - product.getRetailPrice() * ((isEmployee) ? 0.3 : 1) < 0) {
             System.out.println("Customer is trying to make an invalid purchase");
             return false;
         }
@@ -47,8 +47,8 @@ public class Minor extends Customer {
                 throw new RuntimeException(e);
             }
 
-            Store.setMoney(Store.getMoney() + product.getRetailPrice());
-            this.setMoney(this.getMoney() - product.getRetailPrice());
+            Store.setMoney(Store.getMoney() + product.getRetailPrice() * ((isEmployee) ? 0.3 : 1));
+            this.setMoney(this.getMoney() - product.getRetailPrice() * ((isEmployee) ? 0.3 : 1));
 
             product.setOwner(this);
 
