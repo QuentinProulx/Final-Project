@@ -37,6 +37,7 @@ public class Minor extends Customer {
             this.getProducts().put(product, this.getProducts().get(product) + 1);
 
             Store.getReceiptNumbers().add(receiptNumber);
+            product.setReceiptNumber(receiptNumber);
 
             try (FileWriter fileWriter = new FileWriter(receiptFile, true)) {
                 fileWriter.write(product.getName() + ",");
