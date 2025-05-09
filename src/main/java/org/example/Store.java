@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Store {
     private static String name = "Quentin's Store";
@@ -12,7 +9,7 @@ public class Store {
     private static Map<Product, Integer> products = new LinkedHashMap<>();
     private static Map<Utility, Integer> utilities = new LinkedHashMap<>();
     private static List<Customer> employees = new ArrayList<>();
-    private static List<Integer> receiptNumbers = new ArrayList<>();
+    private static Map<Integer, Product> receiptNumbers = new TreeMap<>();
 
     /**
      * Adds a product to the store's products in exchange for money
@@ -245,11 +242,11 @@ public class Store {
         Store.employees = employees;
     }
 
-    public static List<Integer> getReceiptNumbers() {
+    public static Map<Integer, Product> getReceiptNumbers() {
         return receiptNumbers;
     }
 
-    public static void setReceiptNumbers(List<Integer> receiptNumbers) {
+    public static void setReceiptNumbers(Map<Integer, Product> receiptNumbers) {
         Store.receiptNumbers = receiptNumbers;
     }
 }
