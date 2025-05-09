@@ -40,6 +40,13 @@ public class GeneralProduct extends Product implements Returnable {
                         owner.getProducts().remove(this);
                     }
 
+                    if (owner instanceof Adult) {
+                        ((Adult) owner).getGeneralProducts().put(this, owner.getProducts().get(this) - 1);
+                        if (((Adult) owner).getGeneralProducts().get(this) == 0) {
+                            ((Adult) owner).getGeneralProducts().remove(this);
+                        }
+                    }
+
                     Store.getProducts().putIfAbsent(this, 0);
                     Store.getProducts().put(this, Store.getProducts().get(this) + 1);
 
