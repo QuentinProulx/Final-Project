@@ -1,12 +1,13 @@
 package org.example;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
 public abstract class Customer {
     protected static int id = 0;
-    protected File receiptFile = new File("src/main/resources/" + id++);
+    protected File receiptFile = new File("src/main/resources/" + id++ + ".csv");
 
     protected String name;
     protected Gender gender;
@@ -20,15 +21,21 @@ public abstract class Customer {
     }
 
     public Customer(String name, Gender gender, double money) {
+        this.name = name;
+        this.gender = gender;
+        this.money = money;
+
         try {
             receiptFile.createNewFile();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        this.name = name;
-        this.gender = gender;
-        this.money = money;
+        try (FileWriter fileWriter = new FileWriter(receiptFile);) {
+            fileWriter.write(this.name + ",\n");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
