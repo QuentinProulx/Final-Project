@@ -41,6 +41,7 @@ public class AdultTest {
         generalProducts.put(product1, 1);
 
         Assertions.assertEquals(customer.getGeneralProducts(), generalProducts);
+        Assertions.assertEquals(customer.getProducts(), products);
     }
 
     @Test
