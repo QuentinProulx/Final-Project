@@ -10,5 +10,7 @@ public class Main {
         Store.getProducts().put(product2, 1);
         adult.purchaseProduct(product1);
         adult.purchaseProduct(product2);
+
+        product2.returnItem();
     }
 }

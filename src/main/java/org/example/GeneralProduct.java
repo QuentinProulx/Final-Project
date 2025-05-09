@@ -1,6 +1,10 @@
 package org.example;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class GeneralProduct extends Product implements Returnable {
     boolean isUsed = false;
@@ -15,7 +19,37 @@ public class GeneralProduct extends Product implements Returnable {
 
     @Override
     public boolean returnItem() {
-        // TODO: Make the item returnable upon class of TextIO in the Store class
+        if (this.owner == null) {
+            throw new IllegalStateException("Owner is null");
+        }
+        File file = new File(owner.receiptFile.getPath());
+        try (Scanner scanner = new Scanner(file)) {
+            String content = "";
+            while (scanner.hasNextLine()) {
+                content += scanner.nextLine();
+            }
+            System.out.println(content);
+
+            String[] info = content.split(",");
+
+            for (int i = 1; i < info.length; i++) {
+                if ((i - 1) % 3 == 0 && Store.getReceiptNumbers().contains(info[i])) {
+                    Store.getReceiptNumbers().remove(info[i]);
+
+                    owner.getProducts().put(this, owner.getProducts().get(this) - 1);
+                    if (owner.getProducts().get(this) == 0) {
+                        owner.getProducts().remove(this);
+                    }
+
+                    Store.getProducts().putIfAbsent(this, 0);
+                    Store.getProducts().put(this, owner.getProducts().get(this) + 1);
+
+                    this.owner = null;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         return false;
     }
 

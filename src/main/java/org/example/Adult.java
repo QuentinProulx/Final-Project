@@ -49,6 +49,8 @@ public class Adult extends Customer {
                 generalProducts.put((GeneralProduct) product, generalProducts.get(product) + 1);
             }
 
+            Store.getReceiptNumbers().add(product.getId());
+
             try (FileWriter fileWriter = new FileWriter(receiptFile, true)) {
                 fileWriter.write(product.getName() + ",");
                 fileWriter.write(product.getRetailPrice() + ",");
