@@ -33,7 +33,7 @@ public abstract class Customer {
             throw new RuntimeException(e);
         }
 
-        try (FileWriter fileWriter = new FileWriter(receiptFile);) {
+        try (FileWriter fileWriter = new FileWriter(receiptFile)) {
             fileWriter.write(this.name + ",\n");
         } catch (IOException e) {
             throw new RuntimeException(e);
