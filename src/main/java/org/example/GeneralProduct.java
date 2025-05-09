@@ -33,7 +33,7 @@ public class GeneralProduct extends Product implements Returnable {
             String[] info = content.split(",");
 
             for (int i = 1; i < info.length; i++) {
-                if ((i - 1) % 3 == 0 && Store.getReceiptNumbers().contains(info[i])) {
+                if (i % 3 == 0 && Store.getReceiptNumbers().contains(Integer.parseInt(info[i]))) {
                     Store.getReceiptNumbers().remove(info[i]);
 
                     owner.getProducts().put(this, owner.getProducts().get(this) - 1);
@@ -42,9 +42,10 @@ public class GeneralProduct extends Product implements Returnable {
                     }
 
                     Store.getProducts().putIfAbsent(this, 0);
-                    Store.getProducts().put(this, owner.getProducts().get(this) + 1);
+                    Store.getProducts().put(this, Store.getProducts().get(this) + 1);
 
                     this.owner = null;
+                    break;
                 }
             }
         } catch (FileNotFoundException e) {

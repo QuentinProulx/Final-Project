@@ -12,5 +12,7 @@ public class Main {
         adult.purchaseProduct(product2);
 
         product2.returnItem();
+
+        System.out.println(product2.getOwner());
     }
 }
