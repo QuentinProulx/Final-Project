@@ -7,13 +7,19 @@ public class RentedUtility extends Utility implements Returnable {
 
     @Override
     public boolean returnItem() {
+        Store.getUtilities().put(this, Store.getUtilities().get(this) - 1);
+
+        if (Store.getUtilities().get(this) == 0) {
+            Store.getUtilities().remove(this);
+        }
+
         if (Store.getMoney() > price) {
             Store.setDebt(Store.getDebt() + calculateReturnValue());
             Store.setMoney(0);
             return true;
         }
 
-        Store.setMoney(Store.getMoney() - price);
+        Store.setMoney(Store.getMoney() - calculateReturnValue());
         return true;
     }
 
