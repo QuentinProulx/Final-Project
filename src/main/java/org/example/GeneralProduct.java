@@ -5,7 +5,7 @@ import java.util.Objects;
 public class GeneralProduct extends Product implements Returnable {
     boolean isUsed = false;
 
-    public GeneralProduct(int price, String name) {
+    public GeneralProduct(String name, int price) {
         super(name, price);
     }
 

@@ -19,7 +19,7 @@ public class StoreTest {
 
     @Test
     public void testAcquireItem2() { // General test case
-        Product product = new GeneralProduct(15, "Ball");
+        Product product = new GeneralProduct("Ball", 15);
         Store.setMoney(15);
 
         boolean result = Store.acquireItem(product);
@@ -34,7 +34,7 @@ public class StoreTest {
 
     @Test
     public void testAcquireItem3() { // Product too expensive test case
-        Product product = new GeneralProduct(15, "Ball");
+        Product product = new GeneralProduct("Ball", 15);
 
         boolean result = Store.acquireItem(product);
 
@@ -43,7 +43,7 @@ public class StoreTest {
 
     @Test
     public void testAcquireItem4() { // Amount out of bounds test case
-        Product product = new GeneralProduct(15, "Ball");
+        Product product = new GeneralProduct("Ball", 15);
         int amount = -5;
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {Store.acquireItem(product, amount);});

@@ -2,8 +2,6 @@ import org.example.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -17,8 +15,8 @@ public class CustomerTest {
 
         Product product1 = new AdultProduct(15, "Cheese Ball");
         Product product2 = new AdultProduct(1, " Cheese Candy");
-        Product product3 = new GeneralProduct(5, "Cotton Candy");
-        Product product4 = new GeneralProduct(5, "Cotton Ball");
+        Product product3 = new GeneralProduct("Cotton Candy", 5);
+        Product product4 = new GeneralProduct("Cotton Ball", 5);
 
         Store.getProducts().put(product4, 1);
         Store.getProducts().put(product1, 1);
@@ -44,8 +42,8 @@ public class CustomerTest {
 
         Product product1 = new AdultProduct(15, "Cheese Ball");
         Product product2 = new AdultProduct(1, " Cheese Candy");
-        Product product3 = new GeneralProduct(5, "Cotton Candy");
-        Product product4 = new GeneralProduct(5, "Cotton Ball");
+        Product product3 = new GeneralProduct("Cotton Candy", 5);
+        Product product4 = new GeneralProduct("Cotton Ball", 5);
 
         Store.getProducts().put(product4, 1);
         Store.getProducts().put(product1, 1);
@@ -63,8 +61,8 @@ public class CustomerTest {
 
         Product product1 = new AdultProduct(15, "Cheese Ball");
         Product product2 = new AdultProduct(1, " Cheese Candy");
-        Product product3 = new GeneralProduct(5, "Cotton Candy");
-        Product product4 = new GeneralProduct(5, "Cotton Ball");
+        Product product3 = new GeneralProduct("Cotton Candy", 5);
+        Product product4 = new GeneralProduct("Cotton Ball", 5);
 
         Store.getProducts().put(product4, 1);
         Store.getProducts().put(product1, 1);
@@ -82,8 +80,8 @@ public class CustomerTest {
 
         Product product1 = new AdultProduct(15, "Cheese Ball");
         Product product2 = new AdultProduct(1, " Cheese Candy");
-        Product product3 = new GeneralProduct(5, "Cotton Candy");
-        Product product4 = new GeneralProduct(5, "Cotton Ball");
+        Product product3 = new GeneralProduct("Cotton Candy", 5);
+        Product product4 = new GeneralProduct("Cotton Ball", 5);
 
         Store.getProducts().put(product4, 1);
         Store.getProducts().put(product1, 1);

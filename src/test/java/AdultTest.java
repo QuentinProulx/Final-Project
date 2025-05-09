@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class AdultTest {
 
@@ -12,8 +11,8 @@ public class AdultTest {
 
     @Test
     public void testPurchaseProduct() { // General Test Case
-        Product product1 = new GeneralProduct(15, "Ball");
-        Product product2 = new GeneralProduct(2, "Gum");
+        Product product1 = new GeneralProduct("Ball", 15);
+        Product product2 = new GeneralProduct("Gum", 2);
         Product product3 = new AdultProduct(30, "Cigar");
         Product product4 = new AdultProduct(15, "Beer");
 
@@ -47,7 +46,7 @@ public class AdultTest {
     @Test
     public void testPurchaseProduct2() { // Null test case
         Product product1 = null;
-        Product product2 = new GeneralProduct(2, "Gum");
+        Product product2 = new GeneralProduct("Gum", 2);
         Product product3 = new AdultProduct(30, "Cigar");
         Product product4 = new AdultProduct(15, "Beer");
 
@@ -63,8 +62,8 @@ public class AdultTest {
 
     @Test
     public void testPurchaseProduct3() { // Price is negative test
-        Product product1 = new GeneralProduct(-1, "Ball");
-        Product product2 = new GeneralProduct(2, "Gum");
+        Product product1 = new GeneralProduct("Ball", -1);
+        Product product2 = new GeneralProduct("Gum", 2);
         Product product3 = new AdultProduct(30, "Cigar");
         Product product4 = new AdultProduct(15, "Beer");
 
@@ -80,8 +79,8 @@ public class AdultTest {
 
     @Test
     public void testPurchaseProduct4() { // Can't afford test case
-        Product product1 = new GeneralProduct(15, "Ball");
-        Product product2 = new GeneralProduct(2, "Gum");
+        Product product1 = new GeneralProduct("Ball", 15);
+        Product product2 = new GeneralProduct("Gum", 2);
         Product product3 = new AdultProduct(30, "Cigar");
         Product product4 = new AdultProduct(15, "Beer");
 
