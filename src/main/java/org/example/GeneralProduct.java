@@ -2,7 +2,6 @@ package org.example;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
