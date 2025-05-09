@@ -2,6 +2,7 @@ import org.example.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedHashMap;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -11,6 +12,8 @@ public class CustomerTest {
 
     @Test
     public void testSearchProducts1() { // General test case
+        Store.setProducts(new LinkedHashMap<>());
+
         Customer customer = new Adult("Bob", Customer.Gender.MALE);
 
         Product product1 = new AdultProduct("Cheese Ball", 15);
@@ -38,6 +41,8 @@ public class CustomerTest {
 
     @Test
     public void testSearchProducts2() { // Null test case
+        Store.setProducts(new LinkedHashMap<>());
+
         Customer customer = new Adult("Bob", Customer.Gender.MALE);
 
         Product product1 = new AdultProduct("Cheese Ball", 15);
@@ -57,6 +62,8 @@ public class CustomerTest {
 
     @Test
     public void testSearchProducts3() { // Empty test case
+        Store.setProducts(new LinkedHashMap<>());
+
         Customer customer = new Adult("Bob", Customer.Gender.MALE);
 
         Product product1 = new AdultProduct("Cheese Ball", 15);
@@ -76,6 +83,8 @@ public class CustomerTest {
 
     @Test
     public void testSearchProducts4() { // Different case test
+        Store.setProducts(new LinkedHashMap<>());
+
         Customer customer = new Adult("Bob", Customer.Gender.MALE);
 
         Product product1 = new AdultProduct("Cheese Ball", 15);
@@ -95,8 +104,6 @@ public class CustomerTest {
         expected.add(product2);
 
         Set<Product> actual = customer.searchProducts(keyword);
-
-        System.out.println(Store.getProducts());
 
         Assertions.assertEquals(expected, actual);
     }

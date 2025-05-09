@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public abstract class Customer {
     protected static int id = 0;
@@ -48,15 +49,10 @@ public abstract class Customer {
         if (keyword == null || keyword.isEmpty()) {
             throw new IllegalArgumentException("Keyword cannot be null or empty");
         }
-        Set<Product> productList = new TreeSet<>();
 
-        for (Product product : Store.getProducts().keySet()) {
-            if (product.getName().toLowerCase().contains(keyword.toLowerCase())) {
-                productList.add(product);
-            }
-        }
-
-        return productList;
+        return Store.getProducts().keySet().stream()
+                .filter(product -> product.getName().toLowerCase().contains(keyword.toLowerCase()))
+                .collect(Collectors.toSet());
     }
 
     /**
