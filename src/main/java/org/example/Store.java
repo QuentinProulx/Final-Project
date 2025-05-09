@@ -41,8 +41,8 @@ public class Store {
         return true;
     }
 
-    public static boolean acquireItem(Product product) {
-        return acquireItem(product, 1);
+    public static boolean acquireItem(Item item) {
+        return acquireItem(item, 1);
     }
 
     /**
@@ -51,7 +51,7 @@ public class Store {
      * @param amount the amount of the product to be sold
      * @return whether the transaction was successful or not
      */
-    // TODO: Make t so that the it sells products instead
+    // TODO: Make it so that the it sells products instead
     public static boolean sellProduct(Item item, int amount) {
         if (item == null) {
             throw new IllegalArgumentException("Product cannot be null");
@@ -96,8 +96,8 @@ public class Store {
         return true;
     }
 
-    public static boolean sellItem(Product product) {
-        return sellItem(product, 1);
+    public static boolean sellProduct(Product product) {
+        return sellProduct(product, 1);
     }
 
     /**
