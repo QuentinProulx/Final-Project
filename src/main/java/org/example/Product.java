@@ -5,6 +5,7 @@ import java.util.Objects;
 public abstract class Product extends Item {
     protected Customer owner;
     protected double retailPrice;
+    protected int receiptNumber;
 
     public Product(String name, int price) {
         super(name, price);
@@ -46,5 +47,13 @@ public abstract class Product extends Item {
 
     public void setRetailPrice(double retailPrice) {
         this.retailPrice = retailPrice;
+    }
+
+    public int getReceiptNumber() {
+        return receiptNumber;
+    }
+
+    public void setReceiptNumber(int receiptNumber) {
+        this.receiptNumber = receiptNumber;
     }
 }

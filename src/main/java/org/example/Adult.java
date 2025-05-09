@@ -50,6 +50,7 @@ public class Adult extends Customer {
             }
 
             Store.getReceiptNumbers().add(receiptNumber);
+            product.setReceiptNumber(receiptNumber);
 
             try (FileWriter fileWriter = new FileWriter(receiptFile, true)) {
                 fileWriter.write(product.getName() + ",");

@@ -33,7 +33,7 @@ public class GeneralProduct extends Product implements Returnable {
             String[] info = content.split(",");
 
             for (int i = 1; i < info.length; i++) {
-                if (i % 3 == 0 && Store.getReceiptNumbers().contains(Integer.parseInt(info[i]))) {
+                if (i % 3 == 0 && Integer.parseInt(info[i]) == receiptNumber) {
                     Store.getReceiptNumbers().remove(Integer.parseInt(info[i]));
 
                     owner.getProducts().put(this, owner.getProducts().get(this) - 1);

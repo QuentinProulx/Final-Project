@@ -14,5 +14,7 @@ public class Main {
         product2.returnItem();
 
         System.out.println(product2.getOwner());
+        System.out.println(Store.getReceiptNumbers());
+        System.out.println(Store.getProducts());
     }
 }
