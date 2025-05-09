@@ -7,6 +7,7 @@ import java.util.*;
 
 public abstract class Customer {
     protected static int id = 0;
+    protected static int receiptNumber = 0;
     protected File receiptFile = new File("src/main/resources/" + id++ + ".csv");
 
     protected String name;
