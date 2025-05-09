@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Objects;
 
-public class Product extends Item {
+public abstract class Product extends Item {
     protected Customer owner;
     protected double retailPrice;
 
