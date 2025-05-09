@@ -13,15 +13,11 @@ public class MinorTest {
     public void testPurchaseProduct() { // General Test Case
         Product product1 = new GeneralProduct("Ball", 15);
         Product product2 = new GeneralProduct("Gum", 2);
-        Product product3 = new AdultProduct("Cigar", 30);
-        Product product4 = new AdultProduct("Beer", 15);
 
-        Adult customer = new Adult("Bob", Customer.Gender.MALE, 100);
+        Minor customer = new Minor("Bob", Customer.Gender.MALE, 100);
 
         Store.getProducts().put(product1, 1);
         Store.getProducts().put(product2, 1);
-        Store.getProducts().put(product3, 1);
-        Store.getProducts().put(product4, 1);
 
         boolean result = customer.purchaseProduct(product1);
 
@@ -30,8 +26,6 @@ public class MinorTest {
 
         Map<Product, Integer> storeProducts = new TreeMap<>();
         storeProducts.put(product2, 1);
-        storeProducts.put(product3, 1);
-        storeProducts.put(product4, 1);
 
         Assertions.assertTrue(result);
         Assertions.assertEquals(products, customer.getProducts());
@@ -42,15 +36,11 @@ public class MinorTest {
     public void testPurchaseProduct2() { // Null test case
         Product product1 = null;
         Product product2 = new GeneralProduct("Gum", 2);
-        Product product3 = new AdultProduct("Cigar", 30);
-        Product product4 = new AdultProduct("Beer", 15);
 
-        Adult customer = new Adult("Bob", Customer.Gender.MALE, 100);
+        Minor customer = new Minor("Bob", Customer.Gender.MALE, 100);
 
         Store.getProducts().put(product1, 1);
         Store.getProducts().put(product2, 1);
-        Store.getProducts().put(product3, 1);
-        Store.getProducts().put(product4, 1);
 
         Assertions.assertThrows(NullPointerException.class, () -> customer.purchaseProduct(product1));
     }
@@ -59,15 +49,11 @@ public class MinorTest {
     public void testPurchaseProduct3() { // Price is negative test
         Product product1 = new GeneralProduct("Ball", -1);
         Product product2 = new GeneralProduct("Gum", 2);
-        Product product3 = new AdultProduct("Cigar", 30);
-        Product product4 = new AdultProduct("Beer", 15);
 
-        Adult customer = new Adult("Bob", Customer.Gender.MALE, 100);
+        Minor customer = new Minor("Bob", Customer.Gender.MALE, 100);
 
         Store.getProducts().put(product1, 1);
         Store.getProducts().put(product2, 1);
-        Store.getProducts().put(product3, 1);
-        Store.getProducts().put(product4, 1);
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> customer.purchaseProduct(product1));
     }
@@ -76,15 +62,11 @@ public class MinorTest {
     public void testPurchaseProduct4() { // Can't afford test case
         Product product1 = new GeneralProduct("Ball", 15);
         Product product2 = new GeneralProduct("Gum", 2);
-        Product product3 = new AdultProduct("Cigar", 30);
-        Product product4 = new AdultProduct("Beer", 15);
 
-        Adult customer = new Adult("Bob", Customer.Gender.MALE, 0);
+        Minor customer = new Minor("Bob", Customer.Gender.MALE, 0);
 
         Store.getProducts().put(product1, 1);
         Store.getProducts().put(product2, 1);
-        Store.getProducts().put(product3, 1);
-        Store.getProducts().put(product4, 1);
 
         boolean result = customer.purchaseProduct(product1);
 
@@ -94,6 +76,17 @@ public class MinorTest {
     @Test
     public void testPurchaseProduct5() { // Store doesn't contain product test case
         Product product1 = new GeneralProduct("Ball", 15);
+
+        Minor customer = new Minor("Bob", Customer.Gender.MALE);
+
+        boolean result = customer.purchaseProduct(product1);
+
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    public void testPurchaseProduct6() {
+        Product product1 = new AdultProduct("Beer", 15);
 
         Minor customer = new Minor("Bob", Customer.Gender.MALE);
 
