@@ -36,7 +36,9 @@ public class Store {
             utilities.put((Utility) item, 1);
         }
 
-        money -= item.getPrice() * amount;
+        if (!(item instanceof RentedUtility)) {
+            money -= item.getPrice() * amount;
+        }
 
         return true;
     }

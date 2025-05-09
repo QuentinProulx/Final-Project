@@ -34,5 +34,6 @@ public class RentedUtilityTest {
         Map<Utility, Integer> utilities = new HashMap<>();
 
         Assertions.assertEquals(utilities, Store.getUtilities());
+        Assertions.assertEquals(1000 - rentedUtility.getPrice() * rentedUtility.getMonthsOwned(), Store.getMoney());
     }
 }

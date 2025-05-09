@@ -7,14 +7,18 @@ public class RentedUtility extends Utility implements Returnable {
 
     @Override
     public boolean returnItem() {
+        if (!Store.getUtilities().containsKey(this)) {
+            System.out.println("Store doesn't contain this utility");
+            return false;
+        }
         Store.getUtilities().put(this, Store.getUtilities().get(this) - 1);
 
         if (Store.getUtilities().get(this) == 0) {
             Store.getUtilities().remove(this);
         }
 
-        if (Store.getMoney() > price) {
-            Store.setDebt(Store.getDebt() + calculateReturnValue());
+        if (Store.getMoney() < price) {
+            Store.setDebt(calculateReturnValue() - Store.getMoney());
             Store.setMoney(0);
             return true;
         }
