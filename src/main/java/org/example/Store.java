@@ -12,6 +12,7 @@ public class Store {
     private static Map<Product, Integer> products = new LinkedHashMap<>();
     private static Map<Utility, Integer> utilities = new LinkedHashMap<>();
     private static List<Customer> employees = new ArrayList<>();
+    private static List<Integer> receiptNumbers = new ArrayList<>();
 
     /**
      * Adds a product to the store's products in exchange for money
@@ -226,5 +227,29 @@ public class Store {
 
     public static void setProducts(Map<Product, Integer> products) {
         Store.products = products;
+    }
+
+    public static Map<Utility, Integer> getUtilities() {
+        return utilities;
+    }
+
+    public static void setUtilities(Map<Utility, Integer> utilities) {
+        Store.utilities = utilities;
+    }
+
+    public static List<Customer> getEmployees() {
+        return employees;
+    }
+
+    public static void setEmployees(List<Customer> employees) {
+        Store.employees = employees;
+    }
+
+    public static List<Integer> getReceiptNumbers() {
+        return receiptNumbers;
+    }
+
+    public static void setReceiptNumbers(List<Integer> receiptNumbers) {
+        Store.receiptNumbers = receiptNumbers;
     }
 }
