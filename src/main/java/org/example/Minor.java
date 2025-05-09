@@ -5,7 +5,11 @@ import java.io.IOException;
 
 public class Minor extends Customer {
     public Minor(String name, Gender gender) {
-        super(name, gender);
+        this(name, gender, 0);
+    }
+
+    public Minor(String name, Gender gender, int money) {
+        super(name, gender, money);
     }
 
     @Override

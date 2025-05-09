@@ -90,4 +90,15 @@ public class MinorTest {
 
         Assertions.assertFalse(result);
     }
+
+    @Test
+    public void testPurchaseProduct5() { // Store doesn't contain product test case
+        Product product1 = new GeneralProduct("Ball", 15);
+
+        Minor customer = new Minor("Bob", Customer.Gender.MALE);
+
+        boolean result = customer.purchaseProduct(product1);
+
+        Assertions.assertFalse(result);
+    }
 }
