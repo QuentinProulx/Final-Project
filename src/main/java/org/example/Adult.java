@@ -49,10 +49,10 @@ public class Adult extends Customer {
                 generalProducts.put((GeneralProduct) product, generalProducts.get(product) + 1);
             }
 
-            try (FileWriter fileWriter = new FileWriter(receiptFile)) {
+            try (FileWriter fileWriter = new FileWriter(receiptFile, true)) {
                 fileWriter.write(product.getName() + ",");
                 fileWriter.write(product.getRetailPrice() + ",");
-                fileWriter.write(product.getId() + ",\n");
+                fileWriter.write(product.getId() + ",");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -65,6 +65,7 @@ public class Adult extends Customer {
             return true;
         }
 
+        System.out.println("The store doesn't contain this product");
         return false;
     }
 

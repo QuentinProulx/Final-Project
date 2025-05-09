@@ -5,6 +5,7 @@ public class Main {
         Adult adult = new Adult("Adiya", Customer.Gender.FEMALE, 15);
         AdultProduct product = new AdultProduct("Medium Fries", 4);
 
-        adult.purchaseProduct(product);
+        Store.getProducts().put(product, 1);
+        System.out.println(adult.purchaseProduct(product));
     }
 }
