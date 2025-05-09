@@ -52,7 +52,7 @@ public class Adult extends Customer {
             try (FileWriter fileWriter = new FileWriter(receiptFile, true)) {
                 fileWriter.write(product.getName() + ",");
                 fileWriter.write(product.getRetailPrice() + ",");
-                fileWriter.write(product.getId() + ",");
+                fileWriter.write(product.getId() + ",\n");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

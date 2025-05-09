@@ -3,9 +3,12 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
         Adult adult = new Adult("Adiya", Customer.Gender.FEMALE, 15);
-        AdultProduct product = new AdultProduct("Medium Fries", 4);
+        AdultProduct product1 = new AdultProduct("Medium Fries", 4);
+        GeneralProduct product2 = new GeneralProduct("Gaming", 4);
 
-        Store.getProducts().put(product, 1);
-        System.out.println(adult.purchaseProduct(product));
+        Store.getProducts().put(product1, 1);
+        Store.getProducts().put(product2, 1);
+        adult.purchaseProduct(product1);
+        adult.purchaseProduct(product2);
     }
 }
