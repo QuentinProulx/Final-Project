@@ -36,10 +36,12 @@ public class Minor extends Customer {
             this.getProducts().putIfAbsent(product, 0);
             this.getProducts().put(product, this.getProducts().get(product) + 1);
 
+            Store.getReceiptNumbers().add(receiptNumber);
+
             try (FileWriter fileWriter = new FileWriter(receiptFile, true)) {
                 fileWriter.write(product.getName() + ",");
                 fileWriter.write(product.getRetailPrice() + ",");
-                fileWriter.write(product.getId() + ",");
+                fileWriter.write(receiptNumber++ + ",\n");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
