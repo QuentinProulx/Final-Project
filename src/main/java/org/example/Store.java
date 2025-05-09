@@ -8,7 +8,6 @@ public class Store {
     private static double debt = 0;
     private static Map<Product, Integer> products = new LinkedHashMap<>();
     private static Map<Utility, Integer> utilities = new LinkedHashMap<>();
-    private static List<Customer> employees = new ArrayList<>();
     private static List<Integer> receiptNumbers = new ArrayList<>();
 
     /**
@@ -152,7 +151,6 @@ public class Store {
         if (customer == null) {
             throw new IllegalArgumentException("Customer can not be null");
         }
-        employees.add(customer);
         customer.setEmployee(true);
     }
 
@@ -164,7 +162,6 @@ public class Store {
         if (customer == null) {
             throw new IllegalArgumentException("Customer can not be null");
         }
-        employees.remove(customer);
         customer.setEmployee(false);
     }
 
@@ -232,14 +229,6 @@ public class Store {
 
     public static void setUtilities(Map<Utility, Integer> utilities) {
         Store.utilities = utilities;
-    }
-
-    public static List<Customer> getEmployees() {
-        return employees;
-    }
-
-    public static void setEmployees(List<Customer> employees) {
-        Store.employees = employees;
     }
 
     public static List<Integer> getReceiptNumbers() {
