@@ -19,7 +19,7 @@ public class GeneralProduct extends Product implements Returnable {
     @Override
     public boolean returnItem() {
         if (this.owner == null) {
-            throw new IllegalStateException("Owner is null");
+            throw new NullPointerException("Owner is null");
         }
         File file = new File(owner.receiptFile.getPath());
         try (Scanner scanner = new Scanner(file)) {
