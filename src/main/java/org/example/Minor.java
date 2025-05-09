@@ -1,5 +1,8 @@
 package org.example;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Minor extends Customer {
     public Minor(String name, Gender gender) {
         super(name, gender);
@@ -33,6 +36,14 @@ public class Minor extends Customer {
             this.getProducts().putIfAbsent(product, 0);
             this.getProducts().put(product, this.getProducts().get(product) + 1);
 
+            try (FileWriter fileWriter = new FileWriter(receiptFile, true)) {
+                fileWriter.write(product.getName() + ",");
+                fileWriter.write(product.getRetailPrice() + ",");
+                fileWriter.write(product.getId() + ",");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
             Store.setMoney(Store.getMoney() + product.getRetailPrice());
             this.setMoney(this.getMoney() - product.getRetailPrice());
 
@@ -41,6 +52,7 @@ public class Minor extends Customer {
             return true;
         }
 
+        System.out.println("The store doesn't contain this product");
         return false;
     }
 }
