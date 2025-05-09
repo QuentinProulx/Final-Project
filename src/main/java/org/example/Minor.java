@@ -27,8 +27,6 @@ public class Minor extends Customer {
         if (Store.getProducts().containsKey(product)) {
             Store.getProducts().put(product, Store.getProducts().get(product) - 1);
 
-            System.out.println(Store.getProducts());
-
             this.getProducts().putIfAbsent(product, 0);
             this.getProducts().put(product, this.getProducts().get(product) + 1);
 
