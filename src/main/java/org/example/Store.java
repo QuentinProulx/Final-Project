@@ -51,7 +51,8 @@ public class Store {
      * @param amount the amount of the product to be sold
      * @return whether the transaction was successful or not
      */
-    public static boolean sellItem(Item item, int amount) {
+    // TODO: Make t so that the it sells products instead
+    public static boolean sellProduct(Item item, int amount) {
         if (item == null) {
             throw new IllegalArgumentException("Product cannot be null");
         }
