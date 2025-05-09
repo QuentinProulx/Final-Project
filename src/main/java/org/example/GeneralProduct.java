@@ -6,7 +6,7 @@ public class GeneralProduct extends Product implements Returnable {
     boolean isUsed = false;
 
     public GeneralProduct(int price, String name) {
-        super(price, name);
+        super(name, price);
     }
 
     public void useProduct() {

@@ -8,7 +8,7 @@ public abstract class Item implements Comparable<Item> {
     protected String name;
 
     private static int nextId = 0;
-    public Item(int price, String name) {
+    public Item(String name, int price) {
         this.price = price;
         this.name = name;
         this.id = nextId++;

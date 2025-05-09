@@ -8,7 +8,7 @@ public class RentedUtilityTest {
 
     @Test
     public void testRentedUtility() {
-        RentedUtility rentedUtility = new RentedUtility(15, "tool");
+        RentedUtility rentedUtility = new RentedUtility("tool", 15);
         rentedUtility.setMonthsOwned(5);
 
         Assertions.assertEquals(5 * 15, rentedUtility.calculateReturnValue());

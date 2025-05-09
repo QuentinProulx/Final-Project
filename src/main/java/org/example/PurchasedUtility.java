@@ -1,7 +1,7 @@
 package org.example;
 
 public class PurchasedUtility extends Utility {
-    public PurchasedUtility(int price, String name) {
-        super(price, name);
+    public PurchasedUtility(String name, int price) {
+        super(name, price);
     }
 }

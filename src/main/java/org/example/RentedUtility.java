@@ -1,8 +1,8 @@
 package org.example;
 
 public class RentedUtility extends Utility implements Returnable {
-    public RentedUtility(int price, String name) {
-        super(price, name);
+    public RentedUtility(String name, int price) {
+        super(name, price);
     }
 
     @Override

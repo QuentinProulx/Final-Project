@@ -6,8 +6,8 @@ public class Product extends Item {
     protected Customer owner;
     protected double retailPrice;
 
-    public Product(int price, String name) {
-        super(price, name);
+    public Product(String name, int price) {
+        super(name, price);
         retailPrice = price * 1.5;
     }
 

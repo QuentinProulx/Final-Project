@@ -5,8 +5,8 @@ import java.util.Objects;
 public abstract class Utility extends Item {
     protected int monthsOwned;
 
-    public Utility(int price, String name) {
-        super(price, name);
+    public Utility(String name, int price) {
+        super(name, price);
         this.monthsOwned = 0;
     }
 
