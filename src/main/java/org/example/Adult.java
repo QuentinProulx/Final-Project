@@ -1,5 +1,7 @@
 package org.example;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -45,6 +47,14 @@ public class Adult extends Customer {
             if (product instanceof GeneralProduct) {
                 generalProducts.putIfAbsent((GeneralProduct) product, 0);
                 generalProducts.put((GeneralProduct) product, generalProducts.get(product) + 1);
+            }
+
+            try (FileWriter fileWriter = new FileWriter(receiptFile)) {
+                fileWriter.write(product.getName() + ",");
+                fileWriter.write(product.getRetailPrice() + ",");
+                fileWriter.write(product.getId() + ",\n");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
 
             Store.setMoney(Store.getMoney() + product.getRetailPrice());
