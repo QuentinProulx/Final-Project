@@ -4,9 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class GeneralProductTest {
 
@@ -75,7 +73,11 @@ public class GeneralProductTest {
         List<Integer> receiptList = new ArrayList<>();
         receiptList.add(1);
 
+        Map<Product, Integer> products = new LinkedHashMap<>();
+        products.put(generalProduct, 1);
+
         Assertions.assertEquals(receiptList, Store.getReceiptNumbers());
+        Assertions.assertEquals(products, Store.getProducts());
     }
 
     @Test

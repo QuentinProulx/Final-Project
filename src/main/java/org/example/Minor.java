@@ -29,12 +29,12 @@ public class Minor extends Customer {
 
             System.out.println(Store.getProducts());
 
+            this.getProducts().putIfAbsent(product, 0);
+            this.getProducts().put(product, this.getProducts().get(product) + 1);
+
             if (Store.getProducts().get(product) == 0) {
                 Store.getProducts().remove(product);
             }
-
-            this.getProducts().putIfAbsent(product, 0);
-            this.getProducts().put(product, this.getProducts().get(product) + 1);
 
             Store.getReceiptNumbers().add(receiptNumber);
             product.setReceiptNumber(receiptNumber);
