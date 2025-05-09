@@ -35,16 +35,16 @@ public class GeneralProduct extends Product implements Returnable {
                 if (i % 3 == 0 && Integer.parseInt(info[i]) == receiptNumber) {
                     Store.getReceiptNumbers().remove(Integer.parseInt(info[i]));
 
-                    owner.getProducts().put(this, owner.getProducts().get(this) - 1);
-                    if (owner.getProducts().get(this) == 0) {
-                        owner.getProducts().remove(this);
-                    }
-
                     if (owner instanceof Adult) {
                         ((Adult) owner).getGeneralProducts().put(this, owner.getProducts().get(this) - 1);
                         if (((Adult) owner).getGeneralProducts().get(this) == 0) {
                             ((Adult) owner).getGeneralProducts().remove(this);
                         }
+                    }
+
+                    owner.getProducts().put(this, owner.getProducts().get(this) - 1);
+                    if (owner.getProducts().get(this) == 0) {
+                        owner.getProducts().remove(this);
                     }
 
                     Store.getProducts().putIfAbsent(this, 0);

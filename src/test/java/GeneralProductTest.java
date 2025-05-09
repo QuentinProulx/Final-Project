@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class GeneralProductTest {
@@ -70,6 +72,10 @@ public class GeneralProductTest {
         }
 
         generalProduct.returnItem();
+        List<Integer> receiptList = new ArrayList<>();
+        receiptList.add(1);
+
+        Assertions.assertEquals(receiptList, Store.getReceiptNumbers());
     }
 
     @Test
