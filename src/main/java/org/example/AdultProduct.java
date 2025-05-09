@@ -1,7 +1,7 @@
 package org.example;
 
 public class AdultProduct extends Product {
-    public AdultProduct(int price, String name) {
+    public AdultProduct(String name, int price) {
         super(name, price);
     }
 }
