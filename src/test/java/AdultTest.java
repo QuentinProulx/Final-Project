@@ -95,4 +95,15 @@ public class AdultTest {
 
         Assertions.assertFalse(result);
     }
+
+    @Test
+    public void testPurchaseProduct5() { // Store doesn't contain product test case
+        Product product1 = new GeneralProduct("Ball", 15);
+
+        Adult customer = new Adult("Bob", Customer.Gender.MALE, 0);
+
+        boolean result = customer.purchaseProduct(product1);
+
+        Assertions.assertFalse(result);
+    }
 }
