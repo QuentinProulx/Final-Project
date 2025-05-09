@@ -50,6 +50,14 @@ public class GeneralProduct extends Product implements Returnable {
                     Store.getProducts().putIfAbsent(this, 0);
                     Store.getProducts().put(this, Store.getProducts().get(this) + 1);
 
+                    owner.money -= this.calculateReturnValue();
+                    if (Store.getMoney() - this.calculateReturnValue() < 0) {
+                        Store.setDebt(Store.getDebt() + (this.calculateReturnValue() - Store.getMoney()));
+                        Store.setMoney(0);
+                    } else {
+                        Store.setMoney(Store.getMoney() - this.calculateReturnValue());
+                    }
+
                     this.owner = null;
                     break;
                 }
