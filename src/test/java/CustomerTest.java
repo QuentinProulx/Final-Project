@@ -13,8 +13,8 @@ public class CustomerTest {
     public void testSearchProducts1() { // General test case
         Customer customer = new Adult("Bob", Customer.Gender.MALE);
 
-        Product product1 = new AdultProduct(15, "Cheese Ball");
-        Product product2 = new AdultProduct(1, " Cheese Candy");
+        Product product1 = new AdultProduct("Cheese Ball", 15);
+        Product product2 = new AdultProduct("Cheese Candy", 1);
         Product product3 = new GeneralProduct("Cotton Candy", 5);
         Product product4 = new GeneralProduct("Cotton Ball", 5);
 
@@ -40,8 +40,8 @@ public class CustomerTest {
     public void testSearchProducts2() { // Null test case
         Customer customer = new Adult("Bob", Customer.Gender.MALE);
 
-        Product product1 = new AdultProduct(15, "Cheese Ball");
-        Product product2 = new AdultProduct(1, " Cheese Candy");
+        Product product1 = new AdultProduct("Cheese Ball", 15);
+        Product product2 = new AdultProduct("Cheese Candy", 1);
         Product product3 = new GeneralProduct("Cotton Candy", 5);
         Product product4 = new GeneralProduct("Cotton Ball", 5);
 
@@ -59,8 +59,8 @@ public class CustomerTest {
     public void testSearchProducts3() { // Empty test case
         Customer customer = new Adult("Bob", Customer.Gender.MALE);
 
-        Product product1 = new AdultProduct(15, "Cheese Ball");
-        Product product2 = new AdultProduct(1, " Cheese Candy");
+        Product product1 = new AdultProduct("Cheese Ball", 15);
+        Product product2 = new AdultProduct("Cheese Candy", 1);
         Product product3 = new GeneralProduct("Cotton Candy", 5);
         Product product4 = new GeneralProduct("Cotton Ball", 5);
 
@@ -78,8 +78,8 @@ public class CustomerTest {
     public void testSearchProducts4() { // Different case test
         Customer customer = new Adult("Bob", Customer.Gender.MALE);
 
-        Product product1 = new AdultProduct(15, "Cheese Ball");
-        Product product2 = new AdultProduct(1, " Cheese Candy");
+        Product product1 = new AdultProduct("Cheese Ball", 15);
+        Product product2 = new AdultProduct("Cheese Candy", 1);
         Product product3 = new GeneralProduct("Cotton Candy", 5);
         Product product4 = new GeneralProduct("Cotton Ball", 5);
 

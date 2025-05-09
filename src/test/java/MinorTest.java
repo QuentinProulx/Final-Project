@@ -13,8 +13,8 @@ public class MinorTest {
     public void testPurchaseProduct() { // General Test Case
         Product product1 = new GeneralProduct("Ball", 15);
         Product product2 = new GeneralProduct("Gum", 2);
-        Product product3 = new AdultProduct(30, "Cigar");
-        Product product4 = new AdultProduct(15, "Beer");
+        Product product3 = new AdultProduct("Cigar", 30);
+        Product product4 = new AdultProduct("Beer", 15);
 
         Adult customer = new Adult("Bob", Customer.Gender.MALE, 100);
 
@@ -42,8 +42,8 @@ public class MinorTest {
     public void testPurchaseProduct2() { // Null test case
         Product product1 = null;
         Product product2 = new GeneralProduct("Gum", 2);
-        Product product3 = new AdultProduct(30, "Cigar");
-        Product product4 = new AdultProduct(15, "Beer");
+        Product product3 = new AdultProduct("Cigar", 30);
+        Product product4 = new AdultProduct("Beer", 15);
 
         Adult customer = new Adult("Bob", Customer.Gender.MALE, 100);
 
@@ -59,8 +59,8 @@ public class MinorTest {
     public void testPurchaseProduct3() { // Price is negative test
         Product product1 = new GeneralProduct("Ball", -1);
         Product product2 = new GeneralProduct("Gum", 2);
-        Product product3 = new AdultProduct(30, "Cigar");
-        Product product4 = new AdultProduct(15, "Beer");
+        Product product3 = new AdultProduct("Cigar", 30);
+        Product product4 = new AdultProduct("Beer", 15);
 
         Adult customer = new Adult("Bob", Customer.Gender.MALE, 100);
 
@@ -76,8 +76,8 @@ public class MinorTest {
     public void testPurchaseProduct4() { // Can't afford test case
         Product product1 = new GeneralProduct("Ball", 15);
         Product product2 = new GeneralProduct("Gum", 2);
-        Product product3 = new AdultProduct(30, "Cigar");
-        Product product4 = new AdultProduct(15, "Beer");
+        Product product3 = new AdultProduct("Cigar", 30);
+        Product product4 = new AdultProduct("Beer", 15);
 
         Adult customer = new Adult("Bob", Customer.Gender.MALE, 0);
 
