@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Adult extends Customer {
-    Map<AdultProduct, Integer> adultProducts = new LinkedHashMap<>();
-    Map<GeneralProduct, Integer> generalProducts = new LinkedHashMap<>();
+    protected Map<AdultProduct, Integer> adultProducts = new LinkedHashMap<>();
+    protected Map<GeneralProduct, Integer> generalProducts = new LinkedHashMap<>();
 
     public Adult(String name, Gender gender) {
         super(name, gender);
