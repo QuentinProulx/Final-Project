@@ -12,7 +12,6 @@ public class Store {
 
     /**
      * Adds a product to the store's products in exchange for money
-     *
      * @param item the item to be added
      * @return whether the transaction has gone through or not
      */
@@ -50,7 +49,6 @@ public class Store {
 
     /**
      * Removes a product from the store's products in exchange for money
-     *
      * @param product the product to be sold
      * @param amount  the amount of the product to be sold
      * @return whether the transaction was successful or not
@@ -85,7 +83,6 @@ public class Store {
 
     /**
      * Takes a loan, increasing both the money that the store has and the debt that the store has
-     *
      * @param amount the amount of money that the store is asking for in the loan
      * @return whether the loan was able to go through or not
      */
@@ -106,7 +103,6 @@ public class Store {
 
     /**
      * Pays debt; Removes the amount of debt that is being paid and
-     *
      * @param amount the amount of debt that is going to be paid
      * @return whether this transaction can go through or not
      */
@@ -131,7 +127,6 @@ public class Store {
 
     /**
      * Hires a customer to work at the store
-     *
      * @param customer the customer to be hired
      */
     public static void hireEmployee(Customer customer) {
@@ -143,7 +138,6 @@ public class Store {
 
     /**
      * Fires a customer from working at the store
-     *
      * @param customer the customer to be fired
      */
     public static void fireEmployee(Customer customer) {
@@ -155,7 +149,6 @@ public class Store {
 
     /**
      * Calculates how much the store is spending on rented items per year
-     *
      * @return the amount the store is spending on rented items every year
      */
     public static double calculateAmountSpentPerYear() {

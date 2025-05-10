@@ -42,7 +42,6 @@ public abstract class Customer {
 
     /**
      * Gets a list of products that the store has with the keyword specified by the customer
-     *
      * @param keyword the keyword the Customer is searching for
      * @return the set of all the products which contain the keyword which the store contains
      */
@@ -58,7 +57,6 @@ public abstract class Customer {
 
     /**
      * Takes a product from the store and gives it to the Customer if the Customer is eligible and has the funds
-     *
      * @param product the product that the Customer is attempting to buy
      * @return whether the transaction was successful or not
      */
