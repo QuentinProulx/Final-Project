@@ -36,4 +36,12 @@ public class RentedUtilityTest {
         Assertions.assertEquals(utilities, Store.getUtilities());
         Assertions.assertEquals(1000 - rentedUtility.getPrice() * rentedUtility.getMonthsOwned(), Store.getMoney());
     }
+
+    @Test
+    public void testReturnItem2() { // Store doesn't contain item test case
+        RentedUtility rentedUtility = new RentedUtility("tool", 15);
+        rentedUtility.setMonthsOwned(5);
+
+        Assertions.assertFalse(rentedUtility.returnItem());
+    }
 }
