@@ -58,18 +58,18 @@ public class Store {
             throw new IllegalArgumentException("Product cannot be null");
         }
         if (amount < 1) {
-            throw new IllegalArgumentException("Amount cannot be less than 1");
+            throw new IndexOutOfBoundsException("Amount cannot be less than 1");
         }
-
         if (!products.containsKey(product)) {
                 System.out.println("Store doesn't have this product");
                 return false;
         }
         if (products.get(product) < amount) {
                 System.out.println("Selling a greater amount of the product than the store has in stock");
+                return false;
         }
         products.put(product, products.get(product) - amount);
-        money += (product).getRetailPrice() * amount;
+        money += (product).getPrice() * amount;
         if (products.get(product) == 0) {
             products.remove(product);
         }

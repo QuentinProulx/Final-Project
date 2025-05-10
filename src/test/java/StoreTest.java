@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class StoreTest {
@@ -179,5 +180,87 @@ public class StoreTest {
         double expected = 45 * 12;
 
         Assertions.assertEquals(expected, Store.calculateAmountSpentPerYear());
+    }
+
+    // sellProduct
+
+    @Test
+    public void testSellProduct() { // General test case
+        Product product1 = new GeneralProduct("Ball", 15);
+        Product product2 = new GeneralProduct("Chips", 15);
+        Product product3 = new GeneralProduct("Chocolate", 15);
+        Product product4 = new GeneralProduct("Video Game", 15);
+
+        Store.setMoney(1000);
+
+        Store.acquireItem(product1);
+        Store.acquireItem(product2);
+        Store.acquireItem(product3);
+        Store.acquireItem(product4);
+
+        Store.sellProduct(product1);
+
+        Map<Product, Integer> products = new LinkedHashMap<>();
+        products.put(product2, 1);
+        products.put(product3, 1);
+        products.put(product4, 1);
+
+        Assertions.assertEquals(products, Store.getProducts());
+        Assertions.assertEquals(1000 - 3 * 15, Store.getMoney());
+    }
+
+    @Test
+    public void testSellProduct2() { // Null test case
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Store.sellProduct(null));
+    }
+
+    @Test
+    public void testSellProduct3() { // Index out of bounds exception
+        Product product1 = new GeneralProduct("Ball", 15);
+        Product product2 = new GeneralProduct("Chips", 15);
+        Product product3 = new GeneralProduct("Chocolate", 15);
+        Product product4 = new GeneralProduct("Video Game", 15);
+
+        Store.setMoney(1000);
+
+        Store.acquireItem(product1);
+        Store.acquireItem(product2);
+        Store.acquireItem(product3);
+        Store.acquireItem(product4);
+
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> Store.sellProduct(product1, -1));
+    }
+
+    @Test
+    public void testSellProduct4() { // Too many orders
+        Product product1 = new GeneralProduct("Ball", 15);
+        Product product2 = new GeneralProduct("Chips", 15);
+        Product product3 = new GeneralProduct("Chocolate", 15);
+        Product product4 = new GeneralProduct("Video Game", 15);
+
+        Store.setMoney(1000);
+
+        Store.acquireItem(product1);
+        Store.acquireItem(product2);
+        Store.acquireItem(product3);
+        Store.acquireItem(product4);
+
+        Assertions.assertFalse(Store.sellProduct(product1, 6));
+    }
+
+    @Test
+    public void testSellProduct5() { // Store doesn't have the product
+        Product product1 = new GeneralProduct("Ball", 15);
+        Product product2 = new GeneralProduct("Chips", 15);
+        Product product3 = new GeneralProduct("Chocolate", 15);
+        Product product4 = new GeneralProduct("Video Game", 15);
+
+        Store.setMoney(1000);
+
+        Store.acquireItem(product2);
+        Store.acquireItem(product3);
+        Store.acquireItem(product4);
+
+        Assertions.assertFalse(Store.sellProduct(product1, 1));
     }
 }
