@@ -12,7 +12,7 @@ public class Store {
 
     /**
      * Adds a product to the store's products in exchange for money
-     * @param item the product to be added
+     * @param item the item to be added
      * @return whether the transaction has gone through or not
      */
     public static boolean acquireItem(Item item, int amount) {
@@ -49,50 +49,29 @@ public class Store {
 
     /**
      * Removes a product from the store's products in exchange for money
-     * @param item the product to be sold
+     * @param product the product to be sold
      * @param amount the amount of the product to be sold
      * @return whether the transaction was successful or not
      */
-    // TODO: Make it so that the it sells products instead
-    public static boolean sellProduct(Item item, int amount) {
-        if (item == null) {
+    public static boolean sellProduct(Product product, int amount) {
+        if (product == null) {
             throw new IllegalArgumentException("Product cannot be null");
         }
         if (amount < 1) {
             throw new IllegalArgumentException("Amount cannot be less than 1");
         }
 
-        if (item instanceof Product) {
-            if (!products.containsKey(item)) {
+        if (!products.containsKey(product)) {
                 System.out.println("Store doesn't have this product");
                 return false;
-            }
-            if (products.get(item) < amount) {
-                System.out.println("Selling a greater amount of the product than the store has in stock");
-            }
-            products.put((Product) item, products.get((Product) item) - amount);
-            money += ((Product) item).getRetailPrice() * amount;
-            if (products.get((Product) item) == 0) {
-                products.remove((Product) item);
-            }
         }
-
-        if (item instanceof Utility) {
-            if (item instanceof RentedUtility) {
-                throw new IllegalArgumentException("Can't sell Rented Utilities; they must be returned!");
-            }
-            if (!utilities.containsKey(item)) {
-                System.out.println("Store doesn't have this product");
-                return false;
-            }
-            if (utilities.get(item) < amount) {
+        if (products.get(product) < amount) {
                 System.out.println("Selling a greater amount of the product than the store has in stock");
-            }
-            utilities.put((Utility) item, utilities.get((Utility) item) - amount);
-            money += item.getPrice() * amount;
-            if (utilities.get((Utility) item) == 0) {
-                utilities.remove((Utility) item);
-            }
+        }
+        products.put(product, products.get(product) - amount);
+        money += (product).getRetailPrice() * amount;
+        if (products.get(product) == 0) {
+            products.remove(product);
         }
 
         return true;
@@ -182,7 +161,7 @@ public class Store {
             amount += utility.getPrice() * utilities.get(utility);
         }
 
-        return amount;
+        return amount * 12;
     }
 
     @Override

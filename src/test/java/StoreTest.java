@@ -164,5 +164,20 @@ public class StoreTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {Store.fireEmployee(customer);});
     }
 
-    //TODO: Add the rest of the Store methods to this
+    // calculateAmountSpentPerYear
+
+    @Test
+    public void testCalculateAmountSpentPerYear() { // General test case
+        RentedUtility rentedUtility1 = new RentedUtility("Tool1", 15);
+        RentedUtility rentedUtility2 = new RentedUtility("Tool2", 15);
+        RentedUtility rentedUtility3 = new RentedUtility("Tool3", 15);
+
+        Store.getUtilities().put(rentedUtility1, 1);
+        Store.getUtilities().put(rentedUtility2, 1);
+        Store.getUtilities().put(rentedUtility3, 1);
+
+        double expected = 45 * 12;
+
+        Assertions.assertEquals(expected, Store.calculateAmountSpentPerYear());
+    }
 }
