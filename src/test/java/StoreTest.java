@@ -20,6 +20,8 @@ public class StoreTest {
 
     @Test
     public void testAcquireItem2() { // General test case
+        Store.setProducts(new LinkedHashMap<>());
+
         Product product = new GeneralProduct("Ball", 15);
         Store.setMoney(15);
 
