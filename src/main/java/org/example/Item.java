@@ -10,6 +10,10 @@ public abstract class Item implements Comparable<Item> {
     private static int nextId = 0;
 
     public Item(String name, int price) {
+        if (name.contains(",")) {
+            throw new IllegalArgumentException("Name contains comma separated values");
+        }
+
         this.price = price;
         this.name = name;
         this.id = nextId++;
