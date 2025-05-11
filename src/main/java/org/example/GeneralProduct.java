@@ -27,7 +27,6 @@ public class GeneralProduct extends Product implements Returnable {
             while (scanner.hasNextLine()) {
                 content += scanner.nextLine();
             }
-            System.out.println(content);
 
             String[] info = content.split(",");
 
@@ -59,7 +58,9 @@ public class GeneralProduct extends Product implements Returnable {
                     }
 
                     this.owner = null;
-                    break;
+
+                    System.out.println("Item successfully returned");
+                    return true;
                 }
             }
         } catch (FileNotFoundException e) {

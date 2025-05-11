@@ -54,6 +54,8 @@ public class Minor extends Customer {
 
             product.setOwner(this);
 
+            System.out.println("Product successfully purchased");
+
             return true;
         }
 

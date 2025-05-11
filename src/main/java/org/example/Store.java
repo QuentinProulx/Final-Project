@@ -74,6 +74,8 @@ public class Store {
             products.remove(product);
         }
 
+        System.out.println("Product sold");
+
         return true;
     }
 
@@ -97,6 +99,8 @@ public class Store {
 
         debt += amount;
         money += amount;
+
+        System.out.println("Loan successfully taken");
 
         return true;
     }
@@ -122,6 +126,8 @@ public class Store {
         debt -= amount;
         money -= amount;
 
+        System.out.println("Debt successfully paid");
+
         return true;
     }
 
@@ -134,6 +140,8 @@ public class Store {
             throw new IllegalArgumentException("Customer can not be null");
         }
         customer.setEmployee(true);
+
+        System.out.println("Employee successfully hired");
     }
 
     /**
@@ -145,6 +153,8 @@ public class Store {
             throw new IllegalArgumentException("Customer can not be null");
         }
         customer.setEmployee(false);
+
+        System.out.println("Employee successfully fired");
     }
 
     /**
@@ -160,6 +170,8 @@ public class Store {
             }
             amount += utility.getPrice() * utilities.get(utility);
         }
+
+        System.out.println("The Store is spending $" + amount * 12 + "per year");
 
         return amount * 12;
     }

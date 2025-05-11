@@ -65,6 +65,8 @@ public class Adult extends Customer {
 
             product.setOwner(this);
 
+            System.out.println("Product successfully purchased");
+
             return true;
         }
 

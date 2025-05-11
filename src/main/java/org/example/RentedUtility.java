@@ -17,6 +17,8 @@ public class RentedUtility extends Utility implements Returnable {
             Store.getUtilities().remove(this);
         }
 
+        System.out.println("Item successfully returned");
+
         if (Store.getMoney() < price) {
             Store.setDebt(calculateReturnValue() - Store.getMoney());
             Store.setMoney(0);
