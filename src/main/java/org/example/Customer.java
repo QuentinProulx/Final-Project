@@ -68,7 +68,7 @@ public abstract class Customer {
             if (isEmployee) {
                 return o1.getName().compareTo(o2.getName());
             } else {
-                return Double.compare(o1.getMoney(), o2.getMoney());
+                return (o2.isEmployee()) ? Double.compare(o1.getMoney(), o2.getMoney()) : 1;
             }
         }
     }
