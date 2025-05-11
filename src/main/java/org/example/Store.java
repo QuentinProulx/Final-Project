@@ -40,6 +40,8 @@ public class Store {
             money -= item.getPrice() * amount;
         }
 
+        System.out.println("Item successfully acquired");
+
         return true;
     }
 
