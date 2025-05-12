@@ -62,13 +62,18 @@ public abstract class Customer {
      */
     public abstract boolean purchaseProduct(Product product);
 
-    public class CustomerComparator implements Comparator<Customer> {
+    public static class CustomerComparator implements Comparator<Customer> {
         @Override
         public int compare(Customer o1, Customer o2) {
-            if (isEmployee) {
+            boolean e1 = o1.isEmployee();
+            boolean e2 = o2.isEmployee();
+
+            if (e1 && e2) {
                 return o1.getName().compareTo(o2.getName());
+            } else if (!e1 && !e2) {
+                return Double.compare(o2.getMoney(), o1.getMoney()); // Descending order
             } else {
-                return (o2.isEmployee()) ? Double.compare(o1.getMoney(), o2.getMoney()) : 1;
+                return e1 ? -1 : 1; // Employees before non-employees
             }
         }
     }
